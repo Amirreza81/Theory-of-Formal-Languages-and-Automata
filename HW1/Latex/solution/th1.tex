@@ -1,0 +1,98 @@
+\\[0.1in]
+\textbf{آ)}\\[0.1in]
+می‌دانیم:
+\begin{center}
+    $p \rightarrow q \equiv \neg p \vee q$\\
+\end{center}
+بنابراین داریم:
+\begin{center}
+    $((\neg p \vee q) \wedge (\neg q \vee r)) \rightarrow
+    (\neg p \vee r)$
+\end{center}
+مجددا:
+\begin{center}
+    $((p \wedge \neg q) \vee (q \wedge \neg r))
+    \vee (\neg p \vee r)$
+\end{center}
+مشاهده می‌شود میان تمامی عناصر، $\vee$ وجود دارد. بنابراین برای ساده‌سازی مسئله به شکل زیر عمل می‌نماییم:
+\begin{center}
+    $[(p \wedge \neg q) \vee (\neg p)] \vee
+    [(q \wedge \neg r) \vee (r)] \equiv
+    [(\neg p \vee p) \wedge (\neg p \vee \neg q)] \vee
+    [(r \vee q) \wedge (r \vee \neg r)]$
+\end{center}
+می‌دانیم $p \vee \neg p \equiv \text{True}$ و همچنین
+$\text{True} \wedge q \equiv q$.
+بنابراین داریم:
+\begin{center}
+    $[(\neg p \vee \neg q)] \vee [(r \vee q)] \equiv
+    (q \vee \neg q) \vee \neg p \vee r \equiv
+    \text{True}$
+\end{center}
+در نتیجه این گزاره، همان‌گویی می‌باشد.\\[0.25in]
+\textbf{ب)}\\[0.1in]
+مشابه بخش آ عمل می‌نماییم.\\
+\begin{center}
+    $((p \vee q) \wedge (\neg p \vee r)) \rightarrow
+     (q \vee r) \equiv
+     \neg ((p \vee q) \wedge (\neg p \vee r)) \vee 
+     (q \vee r)$\\
+     $\equiv ((\neg p \wedge \neg q) \vee (p \wedge \neg r)) 
+     \vee (q \vee r)$
+\end{center}
+برای ساده‌سازی داریم:
+\begin{center}
+    $[q \vee (\neg p \wedge \neg q)] \vee
+    [(p \wedge \neg r) \vee r]$\\
+    $\equiv
+    [(q \vee \neg p) \wedge (q \vee \neg q)] \vee
+    [(p \vee r) \wedge (\neg r \vee r)]$
+\end{center}
+می‌دانیم $p \vee \neg p \equiv \text{True}$ و همچنین
+$\text{True} \wedge q \equiv q$.
+\begin{center}
+    $(q \vee \neg p) \vee (p \vee r) \equiv
+    (p \vee \neg p) \vee q \vee r$
+\end{center}
+می‌دانیم $\text{True} \vee q \equiv \text{True}$ که از آن در بخش قبل نیز استفاده کردیم. درنتیجه داریم:
+\begin{center}
+    $(p \vee \neg p) \vee q \vee r \equiv
+    \text{True} \vee q \vee r \equiv
+    \text{True}$
+\end{center}
+بنابراین این گزاره، همان‌گویی می‌باشد.\\[0.25in]
+\textbf{ج)}\\[0.1in]
+ابتدا عبارت را ساده‌تر می‌نماییم:
+\begin{center}
+    $[ (p \vee q) \wedge (p \rightarrow r) \wedge
+    (q \rightarrow s)] \rightarrow (r \vee s)$\\[0.05in]
+    $\equiv 
+    [(p \vee q) \wedge (\neg p \vee r) \wedge (\neg q \vee s)]
+    \rightarrow (r \vee s)$\\[0.05in]
+    $\equiv 
+    [(\neg p \wedge \neg q) \vee (p \wedge \neg r) \vee 
+    (q \wedge \neg s)] \vee (r \vee s)$
+\end{center}
+میان تمامی عناصر $\vee$ وجود دارد. برای ساده‌سازی داریم:
+\begin{center}
+    $(\neg p \wedge \neg q) \vee [r \vee (p \wedge \neg r)] \vee
+    [s \vee (q \wedge \neg s)]$
+\end{center}
+حال به کمک روش‌های بخش قبل، همان‌گویی بودن این گزاره را اثبات می‌نماییم:
+\begin{center}
+    $(\neg p \wedge \neg q) \vee
+    [(r \vee p) \wedge (r \vee \neg r)] \vee
+    [(s \vee q) \wedge (s \vee \neg s)]$\\[0.05in]
+    $\equiv 
+    (\neg p \wedge \neg q) \vee (r \vee p) \vee (s \vee q)$
+\end{center}
+حال یک بار $q$ و در ادامه $p$ را با عبارت $(\neg p \wedge \neg q)$ ادغام می‌نماییم:
+\begin{center}
+    $[(\neg p \wedge \neg q) \vee q] \vee p \vee r \vee s$\\[0.05in]
+    $\equiv 
+    [(\neg p \vee q) \wedge (\neg q \vee q)] \vee p  \vee r \vee s$
+    \\[0.05in]
+    $\equiv (\neg p \vee q) \vee p  \vee r \vee s$\\[0.05in]
+    $\equiv (\neg p \vee p) \vee q \vee r \vee s$\\[0.05in]
+    $\equiv \text{True} \vee q \vee r \vee s \equiv \text{True}$
+\end{center}

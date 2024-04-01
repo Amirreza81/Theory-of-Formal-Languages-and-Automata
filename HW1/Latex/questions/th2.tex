@@ -1,0 +1,26 @@
+\textbf{پرسش دوم}\\[0.1in]
+بگمارید که 
+$L, K \subseteq \Sigma^*$
+دو زبان هستند. آنگاه زبان‌های خارج قسمت چپ $K^{-1}L$
+و خارج قسمت راست $LK^{-1}$ را به گونه‌ی زیر تعریف می‌کنیم.
+\begin{center}
+    $K^{-1}L = \{x \in \Sigma^* | yx \in L \; \text{\lr{for some}}
+    \; y \in K\}$ \\[0.08in]
+    $LK^{-1} = \{x \in \Sigma^* | xy \in L \; \text{\lr{for some}}
+    \; y \in K\}$
+\end{center}
+نشان دهید که
+\begin{center}
+    $K^{-1}L = (L^R(K^R)^{-1})^R$
+\end{center}
+که در آن منظور از $L^R$
+زبانی است که از وارون کردن رشته‌های $L$
+بدست می‌آید.
+\begin{equation*}
+    \begin{aligned}
+        w = w_1\ldots w_n \in \Sigma^* &\Longrightarrow 
+        w^R = w_n \ldots w_1 \\[0.07in]
+        L \subseteq \Sigma^* &\Longrightarrow L^R = \{
+        w^R | \; w \in L \}
+    \end{aligned}
+\end{equation*}
