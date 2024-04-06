@@ -1,0 +1,197 @@
+\subsection*{1. }
+فرض کنید $A$ یک زبان منظم باشد. می‌خواهیم نشان بدهیم که $A^R$ نیز منظم است.
+وقتی می‌گوییم که $A$ منظم است یعنی یک 
+$DFA$ مانند $M$ وجود دارد که آن را تشخیص می‌دهد.
+\begin{center}
+    $M \; = \;
+    (Q,\; \Sigma,\; \delta,\; q_0,\;  F)$ \\[0.2in]
+\end{center}
+حال ماشین $N$ که یک $NFA$ است را به شکل زیر تشکیل می‌دهیم تا 
+$A^R$ را تشخیص بدهد.
+داریم:
+\begin{center}
+    $N = (Q', \Sigma', \delta', q'_0, F')$
+    \begin{equation*}
+    \begin{cases}
+        Q' &= Q \; \cup \; \{q'_0\} \\
+        \Sigma' &= \Sigma \\[0.15in]
+        \delta' &\rightarrow
+        \begin{cases}
+            \delta'(q'_0,\epsilon)  &= F\\
+            \delta'(q'_0,a) & = \emptyset \;\;  \text{all}\; a \in \Sigma \\
+            \delta'(p,a) &= \{q|\delta(q,a)\;=p\}
+            \;\; \text{all}\; q\in Q,a \in \Sigma\\
+        \end{cases}\\[0.1in]
+        F' &= \{q_0\}\\
+    \end{cases}
+    \end{equation*}
+    \\[0.2in]
+\end{center}
+
+بنابراین $A^R$ نیز منظم است و 
+رده‌ی زبان‌های منظم زير عمليات وارون بسته است.\\
+
+\subsection*{2. }
+برای حل این سوال زیبا، زبان $L$ و پردازه $h$ را تعریف کرده‌ایم.
+در بخش اول نیاز است هم‌ریختی $h$ را به عنوان یک عملگر روی عبارات منظم تعریف بنماییم.
+در بخش دوم باید نشان بدهیم $L(h(R)) \;=\; h(L(R))$. بنابراین شروع به حل می‌کنیم:
+\subsubsection*{بخش اول}
+برای عبارت منظم $R$، در نظر بگیرید $h(R)$ عبارت منظمی است که از طریق جایگزین کردن
+هر رویداد $a \in \Sigma$ در $R$ به وسیله رشته $h(a)$ به دست آمده است. برای شفافیت مثالی می‌زنیم:
+\begin{center}
+    $R = (0+1)01(0+1)^*,\;\; h(0) = ab, \; h(1) = ba$\\[0.1in]
+    $\rightarrow h(R) = (ab+ba)abba(ab+ba)^*$ \newline
+\end{center}
+
+بنابراین به طور رسمی می‌توان $h(R)$ به کمک استقرا به طور زیر تعریف کرد:
+\begin{eqnarray*}
+    h(\emptyset) &=& \emptyset \\
+    h(\epsilon) &=& \epsilon \\
+    h(a) &=& h(a) \\
+    h(R^*) &=& (h(R))^* \\
+    h(R_1R_2) &=& h(R_1)h(R_2) \\
+    h(R_1 \cup R_2) &=& h(R_1)\cup h(R_2) \\[0.2in]
+\end{eqnarray*}
+
+\subsubsection*{بخش دوم}
+راه اول:\\
+در این بخش باید نشان بدهیم که 
+$L(h(R)) \;=\; h(L(R))$.
+برای این کار نیاز است از استفرا کمک بگیریم و مسئله را به 3 بخش تقسیم نماییم. ابتدا پایه استقرا را می‌نویسیم.\\[0.2in]
+پایه استقرا: \newline
+\begin{itemize}
+    \item 
+    $R\;=\; \epsilon \;|\; \emptyset$
+    $\longleftarrow$ 
+    $h(R)\;=\;R$
+    $\longleftarrow$ 
+    $h(L(R)) \;=\; L(R)$.\\
+
+    \item 
+    $R\;=\;a$
+    $\longleftarrow$
+    $L(R) \;=\; \{a\}$
+    $\longleftarrow$
+    $h(L(R)) = \{h(a)\} = L(h(a)) = L(h(R))$.\\[0.1in]
+\end{itemize}
+حال برای گام استقرا، مسئله را به 3 بخش تقسیم می‌کنیم:
+\paragraph*{حالت اول:}
+$R\;=\;R_1^*$\\[0.15in]
+به ترتیب مراحل زیر را طی می‌کنیم. دقت کنید از فرض استقرا نیز استفاده خواهیم کرد:
+\begin{eqnarray}
+    h(R) =& h(R_1^*) &= h(R_1)^* \\
+    \rightarrow 
+    L(h(R))\;=&\;L(h(R_1^*))\;&=\;L(h(R_1)^*)\;=\;L(h(R_1))^* \\
+    \rightarrow L(h(R_1))^*\;=&\;h(L(R_1))^*\;&=\;h(L(R_1)^*)\;=\;
+    h(L(R_1^*))\;=\;h(L(R))
+\end{eqnarray}
+
+\paragraph*{حالت دوم:}
+$R\;=\;R_1R_2$\\[0.15in]
+به ترتیب مراحل زیر را طی می‌کنیم. دقت کنید از فرض استقرا نیز استفاده خواهیم کرد:
+\begin{eqnarray*}
+    h(L(R)) =& h(L(R_1R_2)) &= h(L(R_1)L(R_2)) = h(L(R_1))h(L(R_2))\\\rightarrow
+    h(L(R_1))h(L(R_2)) =& L(h(R_1))L(h(R_2)) &= L(h(R_1)h(R_2)) =
+    L(h(R_1R_2)) \\\rightarrow
+    L(h(R_1R_2)) =& L(h(R)) &
+\end{eqnarray*}
+
+\paragraph*{حالت سوم:}
+$R\;=\;R_1 \cup R_2$\\[0.15in]
+به ترتیب مراحل زیر را طی می‌کنیم. دقت کنید از فرض استقرا نیز استفاده خواهیم کرد:
+\begin{eqnarray*}
+    h(L(R)) &=& h(L(R_1\cup R_2)) = h(L(R_1)\cup L(R_2)) = h(L(R_1)) \cup h(L(R_2))\\\rightarrow
+    h(L(R_1))\cup h(L(R_2)) &=& L(h(R_1))\cup L(h(R_2)) = L(h(R_1)\cup h(R_2)) =
+    L(h(R_1\cup R_2)) \\\rightarrow
+    L(h(R_1\cup R_2)) &=& L(h(R)) 
+\end{eqnarray*}
+
+حال برای جمع‌بندی این سوال داریم:\\[0.15in]
+ابتدا زبان منظمی مانند $l$ را درنظر بگیرید . چون این زبان منظم است،
+عبارت منظمی مانند $R$ وجود دارد که 
+$L(R) = l$.
+و طبق اثباتی که داشتیم می‌دانیم 
+$L(h(R)) \;=\; h(L(R))$، پس نتیجه می‌شود که 
+$h(l) = L(h(R))$.
+\newline
+پس $h(l)$ زبانی است که توسط عبارت منظم $h(R)$ توصیف می‌شود؛ درنتیجه زبانی منظم است.
+پس زبان‌های منظم زیر پردازه‌های هم‌ریخت بسته می‌باشند.\newline\newline
+نکته: شاید نیاز بود خواص خود پردازه‌های هم‌ریخت را نیز قبل حل، اثبات نماییم.
+\newline\newline
+\textbf{ویژگی‌های پردازه هم‌ریخت}
+\begin{itemize}
+    \item[1. ] $h(L^*) \;=\; h(L)^*$\\[0.1in]
+    برای  این ویژگی، رشته دلخواهی که عضو $h(L^*)$ هست را درنظر بگیرید.
+    این رشته را $m$ می‌نامیم. درنتیجه رشته‌ای مانند $n$ وجود دارد که
+    $h(n) = m$.
+    حال اگر $n$ را به طور $n_1n_2\ldots n_k$ تعریف کنیم که $h(n)$ برابر می‌شود با حاصل ضرب تمامی $h(n_i)$ها که هر کدام عضو $h(L)$ می‌باشند. درنتیجه:
+    \begin{center}
+        $m\;\in\;h(L)^*\;  \rightarrow \; h(L^*) \subseteq h(L)^*$
+        \\[0.1in]
+    \end{center}
+    این از سمت اول. برای سمت دوم، به طور برعکس عمل می‌کنیم.
+    \begin{eqnarray*}
+        m\;\in \; h(L)^*&,& \;\; m\;=\;m_1\ldots m_k\\
+        \forall i\in \{1,\ldots,k\},\exists t_i\in L,
+        m_i = h(t_i) &\rightarrow& m=h(t_1)\ldots h(t_k) = h(t_1\ldots t_k)
+    \end{eqnarray*}
+    که حاصل ضرب $t_i$ها عضو $L^*$ می‌باشند و داریم:
+    \begin{center}
+        $m\in h(L^*) \rightarrow h(L)^* \subseteq h(L^*)$
+    \end{center}
+    دو طرف را ثابت کردیم. پس ویژگی را داراست.
+    \\[0.1in]
+    
+    \item[2. ]$h(L_1\cup L_2) \;=\; h(L_1)\cup h(L_2)$\\[0.1in]
+    به طور مشابه هر دو طرف را نشان می‌دهیم.\newline
+    \begin{center}
+        $m\in h(L_1 \cup L_2),\;\; \exists n \in
+         L_1\cup L_2, \;\; h(n)=m$\\
+    \end{center}
+    حال $n$ را اگر عضو $L_1$ درنظر بگیریم، داریم:
+    \begin{center}
+        $h(n)\in h(L_1),$\\
+        $m\in h(L_1),\;\; \rightarrow m\in h(L_1)\cup h(L_2)
+        \rightarrow h(L_1\cup L_2)\;\subseteq h(L_1) \cup h(L_2)$
+    \end{center}
+    این از سمت اول. برای سمت دوم ادامه می‌دهیم. رشته $m$ عضو $h(L_1)\cup 
+    h(L_2)$ را درنظر بگیرید.
+    \begin{center}
+        $\text{if}\; m\in L_1,\;\rightarrow\; \exists \; n
+        \in L_1,\;\; h(n)=m$\\
+        $n\in L_1\cup L_2,\;\; m\in h(L_1\cup L_2)\rightarrow
+        \;h(L_1)\cup h(L_2) \subseteq h(L_1 \cup L_2)$\\[0.1in]
+    \end{center}
+    بنابراین این ویژگی را نیز دارا می‌باشد.
+    \item[3. ]$h(L_1\circ  L_2) \;=\; h(L_1)\circ h(L_2)$\\[0.1in]
+    به طور مشابه هر دو طرف را نشان می‌دهیم.
+    ابتدا طرف اول را نشان می‌دهیم.
+    \newline
+    \begin{center}
+        $m \in h(L_1)\circ h(L_2),\;\;\exists r\in h(L_1),\;
+        q \in h(L_2),\; m = rq$\\
+        $\rightarrow
+        r \in h(L_1),\; \exists s \in L_1,\; h(s) = r$\\
+        $q \in h(L_2) \rightarrow\exists t \in L_2,\; h(t) = q$\\
+    \end{center}
+    در نتیجه داریم:
+    \begin{center}
+        $m=h(st),\; st\in L_1\circ L_2 \rightarrow m \in h(L_1\circ L_2)$\\
+        $\rightarrow h(L_1) \circ h(L_2) \subseteq h(L_1\circ L_2)$\\[0.1in]
+    \end{center}
+
+    فرض کنید $m$ عضو $h(L_1\circ  L_2)$ می‌باشد.
+    داریم:
+    \begin{center}
+        $\exists n \in L_1 \circ L_2,\; h(n) = m$\\
+        $\exists r\in L_1,\; q\in L_2,\;\; n = rq,\;\;
+        m = h(r)h(q)$\\
+        $h(r)\in h(L_1),\; h(q)\in h(L_2),\;\;m\in h(L_1)\circ
+        h(L_2) \rightarrow h(L_1\circ L_2) \subseteq h(L_1)\circ
+        h(L_2)$\\
+    \end{center}
+    بنابراین این ویژگی نیز اثبات شد.\\[0.15in]
+\end{itemize}
+راه دوم، سریع و خلاصه:
+\newline
+میدانیم برای $A$ یک $NFA$ وجود دارد که آن را تشخیص می‌دهد. طبق تعریف $h$ میتوان مرحله ب مرحله و کاراکتر به کاراکتر جلو رفت و نتایج را الحاق کرد. اگر $h(a)$ بیش از یک کاراکتر باشد، میتوان به $NFA$ اولیه، استیت جدید اضافه کرد. و به همین شکل می‌توان یک $NFA$ ساخت و اثبات کرد $h(a)$ منظم است.
