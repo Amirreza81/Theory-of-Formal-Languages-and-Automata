@@ -1,0 +1,83 @@
+\subsection*{P}
+
+\subsubsection*{Intersection}
+فرض کنید $L_1$ و $L_2$ در P باشند.
+میخواهیم نشان دهیم اجتماعشان نیز در P است.
+ماشین تورینگ $M_i$ برای زبان $L_i$ در نظر بگیرید. هر دو دیسایدر هستند.
+حال ماشین تورینگ M را به شکل زیر میسازیم:
+\begin{itemize}
+    \item به ازای ورودی $w$:
+    \item ماشین $M_1$ را روی ورودی ران کن.
+    \item اگر رجکت کرد، رجکت کن. در غیر این صورت $M_2$ را ران کن.
+    \item اگر رجکت کرد، رجکت کن. در غیر این صورت اکسپت کن.
+\end{itemize}
+واضحا این ماشین زبان گفته شده را میپذیرد و هالت میکند.
+در نتیجه M یک دیسایدر است. 
+
+اگر پیچیدگی $M_i$ را برابر $k_i$ در نظر بگیریم، داریم:
+\begin{center}
+    $O(n^{k_1} + n^{k_2}) = O(n^{max(k_1, k_2)}$
+\end{center}
+در نتیجه 
+$L \in P$.
+
+
+\subsubsection*{Union}
+همه چیز را مانند بخش قبل فرض کنید. M را به این گونه تعریف میکنیم:
+\begin{itemize}
+    \item به ازای ورودی $w$:
+    \item ماشین اول را ران کن. اگر اکسپت کرد، اکسپت و در غیر این صورت ماشین دوم را ران کن.
+    \item اگر ماشین دوم اکسپت کرد، اکسپت و در غیر این صورت رجکت کن.
+\end{itemize}
+استدلال ها عینا طبق بخش قبل است بنابراین 
+$L \in P$
+
+\subsubsection*{Concatenation}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.95]{solution/6-1.png}
+\end{figure}
+
+\subsubsection*{\lr{Kleene star}}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.95]{solution/6-2.png}
+\end{figure}
+
+برای این بخش از 
+\href{https://www.cs.umd.edu/~gasarch/COURSES/452/F14/poly.pdf}{این}
+استفاده شده است.
+
+
+\subsection*{NP}
+
+
+\subsubsection*{Intersection}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.95]{solution/6-3.png}
+\end{figure}
+
+\subsubsection*{Union}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.95]{solution/6-4.png}
+\end{figure}
+
+\subsubsection*{Concatenation}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.95]{solution/6-5.png}
+\end{figure}
+
+\subsubsection*{\lr{Kleene star}}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.95]{solution/6-6.png}
+\end{figure}
+
+
+برای این سوال از 
+\href{https://homes.cs.aau.dk/~srba/courses/tutorials-CC-10/t13-sol.pdf}{این}
+استفاده شده است.
+\\
